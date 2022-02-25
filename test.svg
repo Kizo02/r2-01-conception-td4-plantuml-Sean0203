@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="80px" preserveAspectRatio="none" style="width:86px;height:80px;background:#FFFFFF;" version="1.1" viewBox="0 0 86 80" width="86px" zoomAndPan="magnify"><defs/><g><!--MD5=[1cd95740aea628efd937ee9d93977c80]
+class Toto--><g id="elem_Toto"><rect codeLine="22" fill="#F0F8FF" height="59.9063" id="Toto" rx="2.5" ry="2.5" style="stroke:#2F4F4F;stroke-width:0.5;" width="65" x="7" y="7"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="27" x="26" y="23.1387">Toto</text><line style="stroke:#2F4F4F;stroke-width:0.5;" x1="8" x2="71" y1="30.9688" y2="30.9688"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="13" y="46.1074">monNom</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="47" x="13" y="60.0762">prenom</text></g><!--MD5=[e2905b9aec8b7ca80f7a8cbddd71f908]
+@startuml
+hide circle
+hide empty members
+hide empty methods
+
+skinparam classAttributeIconSize 0
+
+skinparam roundcorner 5
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName Helvetica
+}
+
+skinparam arrow {
+    MessageAlign center
+}
+
+class Toto {
+    monNom
+    prenom
+}
+@enduml
+
+PlantUML version 1.2022.2beta8(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

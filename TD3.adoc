@@ -1,0 +1,202 @@
+:moduleTitle: R2.01 (Conception)
+:authorDefault:  BUT/Info-S2/R2.01
+// include::lib/globals.asc[] // temporairement
+:tdnum: TD 3
+:eleve:
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+= {doctitle}
+:Author:  {authorDefault}
+:lang: fr
+:slideshowlocation: IUT Blagnac
+:copyright: {date={localdate}}, {slideshowlocation} *** {author} *** Powered by Asciidoctor &#169;
+:incremental:
+:source-highlighter: pygments
+:numbered: true
+:icons: font
+:imagesdir: images
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIONS DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: http://webetud.iut-blagnac.fr/[Support de Cours]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Durée
+:depot: À rendre
+:lien: Lien
+:img: img
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version corrigée
+=====
+Cette version comporte des indications pour les
+réponses aux exercices.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+.  Je sais programmer, j'ai conscience qu'il faut réfléchir avant de se lancer dans le codage. J'ai des notions de structure de données.
+.	Je connais les concepts principaux du Diagramme de Classes : classe, attribut, attribut dérivé, identifiant, association, composition, multiplicité, classe-association.
+.	Je connais les conventions d’écriture du Diagramme de Classes
+| {objtd}	| Comprendre ce qu'est un *modèle*.
+| {duree}	| *1 séance* de 1,5h
+|======================
+
+// // | {depot}	| -
+
+== Rappel du cours
+
+Dans le diagramme de classe suivant, repérez les différents éléments :
+
+. `classe`
+. `nom de classe`
+. `attribut`
+. `association`
+. `cardinalité` (aussi appelé `multiplicité`)
+. rôle
+
+== Traduire en langage naturel des diagrammes de classe
+
+Vous avez vu qu'un diagramme de classe permet de représenter ("modéliser") des propriétés ("une personne possède un nom") et des contraintes ("une personne peut posséder plusieurs logements").
+
+=== Trouver les bonnes explications
+
+Pour chacun des diagrammes de classe suivants (trouvés sur le web)
+
+==== Diagramme yUML
+
+TIP: ce diagramme est tiré d'un site permettant de dessiner très facilement des diagrammes UML : https://yuml.me/.
+
+image::td3-1.svg[alt="Diag de Classe",width=80%]
+
+- [ ] Un `Customer` peut avoir un `Order`
+- [ ] Un `Customer` doit avoir un `Order`
+- [ ] Un `Customer` a des `Order`
+- [ ] Un `Order` a un `forname`
+- [ ] Un `Order` a un `LineItem`
+- [ ] Un `Order` a des `LineItem`
+
+//----------------------------------------------------- Correction ------------
+[%collapsible]
+.Solution image:icons/solution.png[]
+====
+- [x] Un `Customer` peut avoir un `Order`
+- [ ] Un `Customer` doit avoir un `Order`
+- [x] Un `Customer` a des `Order`
+- [ ] Un `Order` a un `forname`
+- [ ] Un `Order` a un `LineItem`
+- [x] Un `Order` a des `LineItem`
+
+====
+//----------------------------------------------------- fin Correction --------
+
+==== Mon nom est ... 
+
+image::td3-2.jpeg[alt="Diag de Classe",width=30%]
+
+TIP: Attention, on ne vous demande pas de cocher les phrases "vraies" ou "qui ont du sens", mis celles représentées par le diagramme. Dans ce cas précis, certaines phrases sont "fausses", ce qui permettra de revenir vers le client pour se faire confirmer (ou informer) ces anomalies.                        
+
+- [ ] Une personne a un nom de famille
+- [ ] Une personne a 2 enfants
+- [ ] Une personne a 2 parents
+- [ ] Une personne peut avoir 1 seul parent
+- [ ] Une personne peut ne pas avoir d'enfant
+
+Question subsidiaire : à votre avis, l'implémentation Java de cette classe aura combien d'attributs ?
+
+//----------------------------------------------------- Correction ------------
+[%collapsible]
+.Solution image:icons/solution.png[]
+====
+- [x] Une personne a un nom de famille
+- [ ] Une personne a 2 enfants
+- [x] Une personne a 2 parents
+- [ ] Une personne peut avoir 1 seul parent
+- [ ] Une personne peut ne pas avoir d'enfant
+
+Question subsidiaire : 4 (les 2 attributs indiqués plus les 2 propriétés)
+
+====
+//----------------------------------------------------- fin Correction --------
+
+==== You drive me crazy 
+
+image::td3-3.png[alt="Diag de Classe",width=60%]
+
+- [ ] Une `Company` possède plusieurs `Vehicle`
+- [ ] Une `Company` possède plusieurs `Employee`
+- [ ] Une `Company` possède 1 seul `Vehicle`
+- [ ] Un `Vehicle` possède une seule `Company`
+- [ ] Une `Employee` possède plusieurs `Company`
+- [ ] Une `Employee` peut ne pas posséder de `Company`
+- [ ] Une `Company` peut ne pas posséder d'`Employee`
+- [ ] Un `Truck` possède un `Vehicle`
+- [ ] Un `Truck` est un `Vehicle`
+- [ ] Un `Vehicle` possède une `mass`
+- [ ] Un `Truck` possède une `mass`
+- [ ] Un `Vehicle` possède un `registration number`
+- [ ] Un `Truck` possède une `registration number`
+
+//----------------------------------------------------- Correction ------------
+[%collapsible]
+.Solution image:icons/solution.png[]
+====
+- [x] Une `Company` possède des `Vehicle`
+- [x] Une `Company` possède des `Employee`
+- [ ] Une `Company` possède 1 seul `Vehicle`
+- [x] Un `Vehicle` possède une seule `Company`
+- [ ] Une `Employee` possède des `Company`
+- [ ] Une `Employee` peut ne pas posséder de `Company`
+- [x] Une `Company` peut ne pas posséder d'`Employee`
+- [ ] Un `Truck` possède un `Vehicle`
+- [x] Un `Truck` est un `Vehicle`
+- [ ] Un `Vehicle` possède une `mass`
+- [x] Un `Truck` possède une `mass`
+- [x] Un `Vehicle` possède un `registration number`
+- [x] Un `Truck` possède une `registration number`
+====
+//----------------------------------------------------- fin Correction --------
+
+=== Trouver vos propres explications
+
+Et faites vérifier par le prof!
+
+image::td3-4.png[alt="Diag de Classe",width=30%]
+
+image::td3-5.png[alt="Diag de Classe",width=60%]
+
+image::td3-6.jpeg[alt="Diag de Classe",width=40%]
+
+image::td3-7.svg[alt="Diag de Classe",width=40%]
+
+WARNING: Ce diagramme comporte une erreur volontaire, que la traduction en phrase devrait vous faire découvrir.
+
+//----------------------------------------------------- Correction ------------
+[%collapsible]
+.Solution image:icons/solution.png[]
+====
+La cardinalité `1` côté `Moteur` de l'association `controler` devrait être `0..1`.
+
+//From LC:
+On pourrait définir une `RoueMotrice` qui hérite de `Roue` et de déplacer l'association avec `Moteur`.
+====
+//----------------------------------------------------- fin Correction --------
+
