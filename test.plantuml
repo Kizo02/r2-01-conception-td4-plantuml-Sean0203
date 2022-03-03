@@ -6,7 +6,8 @@ hide empty methods
 
 skinparam classAttributeIconSize 0
 
-skinparam roundcorner 5
+skinparam roundcorner 1
+skinparam linetype ortho
 
 skinparam class {
 	BackgroundColor AliceBlue
@@ -21,9 +22,148 @@ skinparam arrow {
     MessageAlign center
 }
 
-class Toto {
-    monNom
-    prenom
+'=== Diagramme 1 ==='
+class Customer {
+	+forname:String
+	+surname:String
+	-password:String
+	{method} login(user, pass)
 }
+
+class Order{}
+class LineItem{}
+
+Order "*" <-- Customer : orders
+LineItem "*" <--* Order
+
+'=== Diagramme 2 ==='
+
+class Personne{
+	-nom : String
+	- prénom : String
+}
+
+Personne "-parents\n2" -- "1..n\n-enfants" Personne : peuvent avoir >
+
+'=== Diagramme 3 ==='
+
+class Company{
+	-name : String
+}
+
+class Employee{
+	-name : String
+}
+
+class Vehicle{
+	-registration number : String
+}
+
+class Truck{
+	-mass : int
+}
+
+class Car{
+	-transmission : String
+}
+
+Company "1" -- "*" Vehicle : hires
+Company "1" -- "*" Employee : employs
+Employee "1" -- "*" Vehicle : drives
+Vehicle <|-- Truck
+Vehicle <|-- Car
+
+'=== Diagramme 4 ==='
+class Salle{}
+class Cours{}
+class Professeur{}
+class Eleve{}
+
+Cours -- "1" Professeur
+Cours -- "1" Salle
+Cours -- "*" Eleve
+
+'=== Diagramme 5 ==='
+class TourOperator{
+	+idTO
+	+nomTO
+	+adresseTO
+}
+
+class Voyages{
+	+idVoyage
+	+libelleVoy
+	+destination
+	+depart
+	+dateDepart
+	+dateArrivee
+	+prixBase
+}
+
+class Options{
+	+idOption
+	+libelleOption
+}
+
+class Commandes{
+	+idCde
+	+dateCde
+	+etatCde
+}
+
+class Clients{
+	+idClient
+	+nomClient
+	+adresseClient
+	+telClient
+}
+
+class Voyageurs{
+	+idVoyageur
+	+nomVoyageur
+	+prenomVoyageur
+	+sexeVoy
+	+dateNaissanceVoy
+}
+
+class PayerOption{
+	+montant
+}
+
+Voyages "1..*" -- "1" TourOperator : Proposer
+Voyages"*" -- "*"Options
+	(Voyages, Options) .. PayerOption
+Voyages "1" -- "*" Commandes : Commander
+Commandes "1..*" -- "1" Clients : Passer
+Commandes "1..*" -- "1..*" Voyageurs : Concerner
+
+'=== Diagramme 6 ==='
+class Graphe{}
+class Arc{}
+class Sommet{}
+
+Sommet "*" <-* "1" Graphe
+Arc "1" <-* "*" Graphe
+
+Sommet "*" <--> "1" Arc : +source
+Sommet "*" <--> "1" Arc : +destination
+
+'=== Diagramme 7 ==='
+class Voiture{
+	couleur
+	modele
+	{method} start()
+	{method} run()
+	{method} stop()
+}
+
+class Roues{}
+class Moteur{}
+class Chauffeur{}
+
+Voiture *-- "4" Roues
+Voiture *-- "1" Moteur
+Roues "2..4" -- "1" Moteur : Controler
+Voiture "0..*" -- "0..1" Chauffeur : conduire
 
 @enduml
